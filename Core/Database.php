@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use PDO;
+
 // connect to the database, and execute a query and return the result
 class Database {
 
