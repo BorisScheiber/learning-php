@@ -11,33 +11,14 @@ spl_autoload_register(function ($class) {
     require base_path("{$class}.php");
 });
 
-require base_path('Core/router.php');
+$router = new \Core\Router();
+$routes = require base_path('routes.php');
+
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
+$router->route($uri, $method);
 
 
 
-
-
-//Funktioiert auch ohne fetchAll also ohne vorher in ein Array zu speichern
-
-//$posts = $db->query("select * from posts");
-
-
-//dd($_GET['id']);
-//$id = $_GET['id'];
-
-//$query = "select * from posts where id = :id";
-
-//dd($query);
-
-//$posts = $db->query($query, ['id' => $id])->fetch();
-
-
-
-//dd($posts);
-
-
-
-//foreach ($posts as $post) {
-//    echo "<h1>" . $post['id'],". ",$post['title'] . "</h1>";
-//}
 
