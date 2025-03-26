@@ -40,18 +40,19 @@ $user = $db->query('select * from users where email = :email', [
 if ($user) {
     // if the user exists, then someone already registered with this email
     header('location: /');
-}else {
+    exit();
+} else {
 
 // if the user does not exist, then create a new user
- $db->query('insert into users (email, password) values (:email, :password)', [
-     'email' => $email,
-     'password' => $password
- ]);
+    $db->query('insert into users (email, password) values (:email, :password)', [
+        'email' => $email,
+        'password' => password_hash($password, PASSWORD_BCRYPT)
+    ]);
 
- // mark the user as logged in
-    $_SESSION ['user'] = [
+
+    login([
         'email' => $email
-    ];
+    ]);
 
     // redirect to the home page
     header('location: /');
