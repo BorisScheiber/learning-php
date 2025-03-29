@@ -1,0 +1,16 @@
+{
+    "name": "bobbybrain/demo2",
+    "authors": [
+        {
+            "name": "Boris Scheiber",
+            "email": "scheiberboris@hotmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\" : "Core/",
+            "Http\\" : "Http/"
+        }
+    }
+}
