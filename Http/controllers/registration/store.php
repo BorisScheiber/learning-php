@@ -2,6 +2,7 @@
 
 
 use Core\App;
+use Core\Authenticator;
 use Core\Database;
 use Core\Validator;
 
@@ -39,8 +40,7 @@ $user = $db->query('select * from users where email = :email', [
 
 if ($user) {
     // if the user exists, then someone already registered with this email
-    header('location: /');
-    exit();
+    redirect('/');
 } else {
 
 // if the user does not exist, then create a new user
@@ -50,13 +50,12 @@ if ($user) {
     ]);
 
 
-    login([
+
+    (new Authenticator())->login([
         'email' => $email
     ]);
 
-    // redirect to the home page
-    header('location: /');
-    exit();
+   redirect('/');
 
 }
 

@@ -6,7 +6,9 @@
             "email": "scheiberboris@hotmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/collections": "^10.48"
+    },
     "autoload": {
         "psr-4": {
             "Core\\" : "Core/",
